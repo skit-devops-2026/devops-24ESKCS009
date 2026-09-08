@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Netflix Clone</title>
+<style>
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+body {background: #000; color: #fff;}
+.header {position: relative; width: 100%; height: 85vh; background: url('https://i.ibb.co/8m3WQnH/netflix-bg.jpg') no-repeat center/cover;}
+.header::after {content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.7);}
+nav {position: absolute; top: 20px; left: 50px; z-index: 5; font-size: 40px; font-weight: bold; color: red;}
+.signin-btn {position: absolute; top: 25px; right: 50px; padding: 8px 15px; background: red; border-radius: 5px; color: #fff; text-decoration: none; z-index: 5;}
+.hero {position: absolute; top: 35%; width: 100%; text-align: center; z-index: 5;}
+.hero h1 {font-size: 45px; font-weight: 700; width: 90%; margin: auto;}
+.hero p {margin-top: 15px; font-size: 18px;}
+.hero .email {margin-top: 20px; display: flex; justify-content: center; gap: 10px;}
+.hero input {padding: 15px; width: 300px; border: none; border-radius: 5px;}
+.hero button {padding: 15px 25px; background: red; border: none; border-radius: 5px; color: #fff; font-size: 16px; cursor: pointer;}
+.trending {padding: 40px 20px;}
+.trending h2 {margin-bottom: 15px; font-size: 26px;}
+.trending-list {display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;}
+.trending-list div {min-width: 150px; position: relative;}
+.trending-list img {width: 150px; height: 200px; border-radius: 5px;}
+.number {position: absolute; bottom: 10px; left: 10px; font-size: 40px; font-weight: bold; color: white; text-shadow: 3px 3px 3px black;}
+.features {padding: 40px 20px;}
+.feature-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
+.feature-box {background: #111; padding: 20px; border-radius: 10px; min-height: 150px;}
+.feature-box h3 {margin-bottom: 10px;}
+.faq {padding: 40px 20px;}
+.faq h2 {font-size: 30px; margin-bottom: 20px;}
+.faq-item {background: #222; padding: 20px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;}
+.faq-item p {font-size: 18px;}
+footer {padding: 40px 20px; color: #777;}
+footer a {color: #777; text-decoration: none; display: block; margin-bottom: 5px;}
+</style>
+</head>
+<body>
+<div class="header">
+<nav>NETFLIX</nav>
+<a href="#" class="signin-btn">Sign In</a>
+<div class="hero">
+<h1>Unlimited movies, TV shows, and more</h1>
+<p>Starts at ₦2,500. Cancel anytime.</p>
+<p>Ready to watch? Enter your email to create or restart your membership.</p>
+<div class="email">
+<input type="email" placeholder="Email address">
+<button>Get Started ></button>
+</div>
+</div>
+</div>
+<section class="trending">
+<h2>Trending Now</h2>
+<div class="trending-list">
+<div><img src="https://i.ibb.co/YL9nLRz/p1.jpg"><span class="number">1</span></div>
+<div><img src="https://i.ibb.co/4NV7q7v/p2.jpg"><span class="number">2</span></div>
+<div><img src="https://i.ibb.co/Tm1nVrX/p3.jpg"><span class="number">3</span></div>
+<div><img src="https://i.ibb.co/f8pMTnq/p4.jpg"><span class="number">4</span></div>
+<div><img src="https://i.ibb.co/vZ8n5x4/p5.jpg"><span class="number">5</span></div>
+</div>
+</section>
+<section class="features">
+<h2>More Reasons to Join</h2>
+<div class="feature-grid">
+<div class="feature-box"><h3>Enjoy on your TV</h3><p>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu‑ray players, and more.</p></div>
+<div class="feature-box"><h3>Download your shows to watch offline</h3><p>Save your favorites easily and always have something to watch.</p></div>
+<div class="feature-box"><h3>Watch everywhere</h3><p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p></div>
+<div class="feature-box"><h3>Create profiles for kids</h3><p>Send kids on adventures with their favorite characters in a space made just for them.</p></div>
+</div>
+</section>
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><p>What is Netflix?</p><span>+</span></div>
+<div class="faq-item"><p>How much does Netflix cost?</p><span>+</span></div>
+<div class="faq-item"><p>Where can I watch?</p><span>+</span></div>
+<div class="faq-item"><p>How do I cancel?</p><span>+</span></div>
+<div class="faq-item"><p>What can I watch on Netflix?</p><span>+</span></div>
+<div class="faq-item"><p>Is Netflix good for kids?</p><span>+</span></div>
+</section>
+<footer>
+<a href="#">FAQ</a>
+<a href="#">Help Center</a>
+<a href="#">Account</a>
+<a href="#">Media Center</a>
+<a href="#">Investor Relations</a>
+<a href="#">Jobs</a>
+<a href="#">Ways to Watch</a>
+<a href="#">Terms of Use</a>
+<a href="#">Privacy</a>
+<a href="#">Cookie Preferences</a>
+<a href="#">Corporate Information</a>
+<a href="#">Contact Us</a>
+</footer>
+</body>
+</html>

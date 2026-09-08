@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>InsiderJobs</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="https://i.imgur.com/8tY6z9k.png" alt="InsiderJobs Logo" class="logo-icon">
+            InsiderJobs
+        </div>
+        <button class="menu-toggle" id="menuToggle">Menu</button>
+        <nav class="nav">
+            <a href="#">Recruiter Login</a>
+            <button class="login-btn" id="loginBtn">Login</button>
+        </nav>
+    </header>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <h1>Over 10,000+ jobs to apply</h1>
+        <p>Your Next Big Career Move Starts Right Here - Explore the Best Job Opportunities and Take the First Step Toward Your Future!</p>
+        <div class="search-bar">
+            <div class="search-input">
+                <span>Search</span>
+                <input type="text" placeholder="Search for jobs" />
+            </div>
+            <div class="search-input">
+                <span>Location</span>
+                <input type="text" placeholder="Location" />
+            </div>
+            <button class="search-btn">Search</button>
+        </div>
+    </section>
+
+    <!-- TRUSTED BY -->
+    <section class="trusted">
+        <p>Trusted by</p>
+        <div class="trusted-logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Walmart_Spark.svg" alt="Walmart">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Accenture.svg" alt="Accenture">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Samsung_logo_%28black_background%29.svg" alt="Samsung">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_Corporate_logo.svg" alt="Adobe">
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- FILTERS BUTTON (Mobile) -->
+        <button class="filters-btn" id="filtersBtn">Filters</button>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="filter-group">
+                <h3>Search by Categories</h3>
+                <label><input type="checkbox"> Programming</label>
+                <label><input type="checkbox"> Data Science</label>
+                <label><input type="checkbox"> Designing</label>
+                <label><input type="checkbox"> Management</label>
+                <label><input type="checkbox"> Networking</label>
+                <label><input type="checkbox"> Cybersecurity</label>
+            </div>
+            <div class="filter-group">
+                <h3>Search by Location</h3>
+                <label><input type="checkbox"> Bangalore</label>
+                <label><input type="checkbox"> Hyderabad</label>
+                <label><input type="checkbox"> Mumbai</label>
+                <label><input type="checkbox"> California</label>
+                <label><input type="checkbox"> Chennai</label>
+                <label><input type="checkbox"> New York</label>
+            </div>
+        </aside>
+
+        <!-- JOBS SECTION -->
+        <section class="jobs-section">
+            <h2>Latest jobs</h2>
+            <p>Get your desired job from top companies</p>
+
+            <div class="job-grid">
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>Network Security Engineer</h3>
+                    <div class="tags">
+                        <span class="location">Bangalore</span>
+                        <span class="level senior">Senior Level</span>
+                    </div>
+                    <p>We are seeking a Network Security Engineer to protect our organization's IT infrastructure. You will design and implement security measures to safeguard our systems.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>Graphic Designer</h3>
+                    <div class="tags">
+                        <span class="location">Chennai</span>
+                        <span class="level intermediate">Intermediate Level</span>
+                    </div>
+                    <p>Join our creative team as a Graphic Designer, where you will be responsible for creating visually appealing graphics and layouts that enhance our brand.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>DevOps Engineer</h3>
+                    <div class="tags">
+                        <span class="location">Bangalore</span>
+                        <span class="level senior">Senior Level</span>
+                    </div>
+                    <p>As a DevOps Engineer, you will play a crucial role in enhancing our software development and deployment processes. You will work with development and operations teams.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>Network Engineer</h3>
+                    <div class="tags">
+                        <span class="location">Bangalore</span>
+                        <span class="level senior">Senior Level</span>
+                    </div>
+                    <p>We are looking for a Network Engineer to manage our infrastructure and ensure robust connectivity across all systems. Your expertise will help us maintain high availability.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>Content Marketing Manager</h3>
+                    <div class="tags">
+                        <span class="location">Mumbai</span>
+                        <span class="level senior">Senior Level</span>
+                    </div>
+                    <p>We are looking for a Content Marketing Manager to lead our content strategy and execution. In this role, you will develop compelling content that engages our audience.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+
+                <!-- Job 6 -->
+                <div class="job-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                    <h3>Marketing Specialist</h3>
+                    <div class="tags">
+                        <span class="location">Chennai</span>
+                        <span class="level beginner">Beginner Level</span>
+                    </div>
+                    <p>Support our marketing efforts as a Marketing Specialist. In this role, you will assist with campaign execution, content creation, and social media management.</p>
+                    <div class="job-actions">
+                        <button class="apply-btn">Apply now</button>
+                        <button class="learn-btn">Learn more</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGINATION -->
+            <div class="pagination">
+                <span class="prev"><</span>
+                <span class="page">1</span>
+                <span class="page active">2</span>
+                <span class="page">3</span>
+                <span class="page">4</span>
+                <span class="next">></span>
+            </div>
+        </section>
+    </div>
+
+    <!-- MOBILE APP SECTION -->
+    <section class="mobile-app-section">
+        <h2>Download Mobile App For <br><strong>Better Experience</strong></h2>
+        <div class="store-buttons">
+            <a href="#" class="store-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge.svg" alt="Get it on Google Play">
+            </a>
+            <a href="#" class="store-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="Download on the App Store">
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://i.imgur.com/8tY6z9k.png" alt="InsiderJobs" class="logo-icon">
+                InsiderJobs
+            </div>
+            <p class="copyright">Copyright ©GreatStack.dev | All right reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">×</button>
+            <h3>Sign in to Job Portal</h3>
+            <p>Welcome back! Please sign in to continue</p>
+
+            <button class="google-signin">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                Continue with Google
+            </button>
+
+            <div class="divider"><span>or</span></div>
+
+            <form class="login-form">
+                <label>Email address</label>
+                <input type="email" placeholder="Enter your email address" required />
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
+
+            <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+
+            <div class="modal-footer">
+                <span>Secured by <strong>Clerk</strong></span>
+                <span class="dev-mode">Development mode</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
