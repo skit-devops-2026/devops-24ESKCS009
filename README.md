@@ -1,175 +1,145 @@
-# HIREHUB 💼
+# HireHub 💼 — Modern Job Portal
+
+![CI Build Status](https://github.com/skit-devops-2026/devops-24ESKCS009/workflows/HireHub%20CI%20Pipeline/badge.svg)
+![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 > **Your Next Big Career Move Starts Right Here.**
 
-A modern, fully responsive job portal landing page and user interface designed to help job seekers discover and explore career opportunities from leading companies.
+HireHub is a modern, fully responsive job portal landing page and user interface designed to help job seekers discover and explore career opportunities from leading companies. It features interactive job search, category/location filtering, a sign-in modal, mobile-responsive navigation, Jest automated test suites, GitHub Actions CI/CD workflows, and a declarative Jenkins pipeline.
 
 ---
-
 
 ## 🌟 Overview
 
-**InsiderJobs** is a web-based job portal designed to provide users with a simple and modern platform for discovering job opportunities.
-
-The website provides an intuitive interface with job search, filtering, job cards, authentication UI, responsive navigation, and mobile-friendly layouts.
-
-The platform includes job opportunities across multiple categories and locations, making it easier for users to find relevant career opportunities.
-
----
-
-## ✨ Features
-
-### 🔍 Interactive Search
-
-- Search jobs by job title or role.
-- Search jobs based on location.
-- User-friendly search interface integrated into the hero section.
-
-### 🏢 Trusted Companies
-
-- Displays companies available on the platform.
-- Interactive company logo section.
-- Hover effects for better user interaction.
-
-### 🗂️ Job Filters
-
-Users can filter jobs dynamically based on:
-
-**Categories:**
-- Programming
-- Data Science
-- Designing
-- Management
-- Networking
-- Cybersecurity
-
-**Locations:**
-- Canada
-- Hyderabad
-- Mumbai
-- Texas
-- Lagos
-- New York
-
-### 💼 Job Cards
-
-Each job card provides important information such as:
-
-- Company logo
-- Job title
-- Company name
-- Job location
-- Experience level
-- Job description
-- Apply Now button
-- Learn More button
-
-### 🔐 Sign-In Modal
-
-The website includes an interactive login interface with:
-
-- Login modal
-- Backdrop overlay
-- Email login form
-- Google login UI
-- Form validation
-- ESC key support
-- Outside-click modal closing
-
-### 📱 Responsive Design
-
-The website is designed to work across:
-
-- Mobile devices
-- Tablets
-- Laptops
-- Desktop computers
-- Large desktop screens
-
-### ☰ Mobile Navigation
-
-- Hamburger menu for smaller screens.
-- Slide-out navigation drawer.
-- Smooth menu transitions.
-- Easy access to navigation links.
-
-### 📄 Pagination
-
-- Multi-page job listing interface.
-- Navigation controls for browsing job opportunities.
-
-### 📲 Mobile App Promotion
-
-A dedicated section promotes mobile application downloads through:
-
-- Google Play
-- App Store
+**HireHub** provides an intuitive web platform with:
+- Dynamic job search & filtering across industries and geographical locations.
+- Accessible authentication modals with full keyboard shortcut (ESC key) and backdrop click handling.
+- Mobile-first drawer navigation with responsive layouts.
+- Automated testing infrastructure using **Jest** and **DOM environment mocking**.
+- **GitHub Actions CI/CD** integration with continuous testing and artifact storage.
+- **Jenkins Pipeline** (`Jenkinsfile`) for local or server automated build verification.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Key Features
 
-### HTML5
+### 🔍 Interactive Job Search & Filtering
+- Search jobs by job title or role keyword.
+- Filter jobs based on global locations (Canada, Hyderabad, Mumbai, Texas, Lagos, New York).
+- Filter jobs across technical categories (Programming, Data Science, Designing, Management, Networking, Cybersecurity).
 
-Used for the structure and semantic markup of the website.
+### 🏢 Trusted Employer Showcase
+- Displays partner hiring organizations (Microsoft, Walmart, Accenture, Samsung, Amazon, Adobe).
+- Interactive hover transitions and responsive image scaling.
 
-Important HTML elements include:
+### 💼 Rich Job Cards
+Each job card provides essential details:
+- Company logo & employer name
+- Job title & seniority level
+- Geographical location
+- Role overview description
+- Quick-action **Apply Now** and **Learn More** buttons
 
-- `<header>`
-- `<nav>`
-- `<section>`
-- `<main>`
-- `<aside>`
-- `<footer>`
-- `<form>`
+### 🔐 Interactive Sign-In Modal
+- Accessible login overlay with backdrop blurring and lock-scroll behavior.
+- Integrated keyboard handling (Escape key closes modal).
+- Form field validation helper functions.
 
-### CSS3
-
-Used for styling, layout, responsiveness, and animations.
-
-Key concepts used:
-
-- Flexbox
-- CSS Grid
-- Media Queries
-- CSS Animations
-- Custom Fonts
-- Modal Backdrop
-- Responsive Layout
-- Hover Effects
-
-### JavaScript
-
-Vanilla JavaScript is used to provide interactive functionality.
-
-Major functionality includes:
-
-- Search interaction
-- Login modal
-- Mobile navigation
-- Form interaction
-- Modal close functionality
-- Keyboard event handling
-- DOM manipulation
+### 📱 Responsive Mobile Navigation
+- Dynamic drawer navigation toggled via hamburger menu.
+- Auto-close functionality upon selecting page navigation links.
 
 ---
 
-## 📁 Project Structure
+## 🛠️ Tech Stack & Automation
+
+- **Frontend Core**: HTML5, CSS3 (Flexbox & Grid), Vanilla JavaScript (ES6+).
+- **Testing Framework**: Jest 29+ with `jest-environment-jsdom` and Babel.
+- **CI/CD Pipeline**: GitHub Actions (`.github/workflows/ci.yml`).
+- **Automation Pipeline**: Declarative Jenkinsfile (`Jenkinsfile`).
+
+---
+
+## 📁 Repository Structure
 
 ```text
 job portal/
-│
-├── images/
-│   └── # Website images, logos and other visual assets
-│
-├── job/
-│   └── # Job-related files and resources
-│
-├── index.html
-│   └── # Main HTML structure of the website
-│
-├── script.js
-│   └── # JavaScript functionality and user interactions
-│
-└── style.css
-    └── # Website styling, layout and responsive design
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # GitHub Actions CI workflow definition
+├── images/                    # Website brand assets and logos
+├── job/                       # Recruiter page and job sub-modules
+├── tests/
+│   └── jobPortal.test.js      # Automated Jest unit & DOM test suite
+├── .gitignore                 # Excludes build artifacts and dependencies
+├── babel.config.js            # Babel configuration for Jest
+├── index.html                 # Main website HTML structure
+├── Jenkinsfile                # Declarative Jenkins build pipeline
+├── package.json               # Node.js dependencies and test scripts
+├── script.js                  # Application logic and exported helper functions
+├── style.css                  # UI styling and responsive layouts
+└── README.md                  # Comprehensive project documentation
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- **Node.js**: v18.0.0 or higher (v20+ recommended)
+- **npm**: v9.0.0 or higher
+
+### 2. Installation
+Clone the repository and install dependencies:
+```bash
+git clone https://github.com/skit-devops-2026/devops-24ESKCS009.git
+cd devops-24ESKCS009
+npm install
+```
+
+### 3. Running the Development Server
+Open `index.html` in your web browser or start a static server:
+```bash
+npx serve .
+```
+
+---
+
+## 🧪 Running Automated Tests
+
+Run the full Jest test suite locally:
+```bash
+npm test
+```
+
+Generate test coverage reports:
+```bash
+npm test:coverage
+```
+
+---
+
+## 🔄 CI/CD Pipelines
+
+### 1. GitHub Actions CI
+The `.github/workflows/ci.yml` pipeline triggers automatically on pushes and pull requests to `main`. It:
+1. Checks out repository code.
+2. Sets up Node.js 20 environment.
+3. Installs clean dependencies via `npm ci`.
+4. Executes the automated test suite with coverage tracking.
+5. Uploads code coverage reports as workflow artifacts.
+
+### 2. Jenkins Pipeline
+The `Jenkinsfile` defines a declarative pipeline containing stages:
+- **Checkout**: Source code retrieval.
+- **Install Dependencies**: Clean dependency installation.
+- **Run Automated Tests**: Jest test suite execution.
+- **Build & Package**: Static asset verification.
+- **Post-actions**: Archiving test coverage reports and build status reporting.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the `LICENSE` details if applicable.
