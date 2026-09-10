@@ -25,7 +25,7 @@ describe('Job Portal Logic & Utility Unit Tests', () => {
 
         test('should pass for valid email and password', () => {
             const result = validateLoginForm('user@example.com', 'securepass123');
-            expect(result.valid).toBe(false);
+            expect(result.valid).toBe(true);
             expect(result.error).toBeUndefined();
         });
     });
