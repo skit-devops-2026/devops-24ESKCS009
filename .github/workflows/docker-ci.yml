@@ -29,9 +29,14 @@ jobs:
           echo "Building backend Docker image..."
           docker build -t job-portal-backend ./backend
 
-      - name: Build Frontend Docker Image
+      - name: Build Frontend Test Docker Image
         run: |
-          echo "Building frontend Docker image..."
+          echo "Building frontend test Docker image..."
+          docker build --target builder -t job-portal-frontend-test ./frontend
+
+      - name: Build Frontend Production Docker Image
+        run: |
+          echo "Building frontend production Nginx Docker image..."
           docker build -t job-portal-frontend ./frontend
 
       - name: Run Unit Tests Inside Backend Docker Container
@@ -42,7 +47,7 @@ jobs:
       - name: Run Unit Tests Inside Frontend Docker Container
         run: |
           echo "Executing tests inside frontend Docker image..."
-          docker run --rm job-portal-frontend npm test
+          docker run --rm job-portal-frontend-test npm test
 
       - name: Tag Images with Commit SHA
         run: |
