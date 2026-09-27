@@ -3,6 +3,7 @@
  */
 
 const {
+    isValidJobTitle,
     filterJobs,
     validateLoginForm,
     toggleModal,
@@ -10,6 +11,25 @@ const {
 } = require('../script.js');
 
 describe('Job Portal Logic & Utility Unit Tests', () => {
+    describe('isValidJobTitle()', () => {
+        test('should return true for valid job titles', () => {
+            expect(isValidJobTitle('Cloud Engineer')).toBe(true);
+            expect(isValidJobTitle('DevOps Specialist')).toBe(true);
+        });
+
+        test('should return false for empty or whitespace-only strings', () => {
+            expect(isValidJobTitle('')).toBe(false);
+            expect(isValidJobTitle('   ')).toBe(false);
+        });
+
+        test('should return false for non-string input types', () => {
+            expect(isValidJobTitle(null)).toBe(false);
+            expect(isValidJobTitle(undefined)).toBe(false);
+            expect(isValidJobTitle(12345)).toBe(false);
+            expect(isValidJobTitle({})).toBe(false);
+        });
+    });
+
     describe('validateLoginForm()', () => {
         test('should reject empty or invalid email', () => {
             const result = validateLoginForm('invalid-email', 'password123');

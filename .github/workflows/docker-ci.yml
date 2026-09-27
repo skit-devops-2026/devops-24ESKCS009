@@ -1,0 +1,74 @@
+name: Job Portal Docker CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-test:
+    name: Build Docker Images, Run Containerized Tests & Push to GHCR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Backend Docker Image
+        run: |
+          echo "Building backend Docker image..."
+          docker build -t job-portal-backend ./backend
+
+      - name: Build Frontend Docker Image
+        run: |
+          echo "Building frontend Docker image..."
+          docker build -t job-portal-frontend ./frontend
+
+      - name: Run Unit Tests Inside Backend Docker Container
+        run: |
+          echo "Executing tests inside backend Docker image..."
+          docker run --rm job-portal-backend npm test
+
+      - name: Run Unit Tests Inside Frontend Docker Container
+        run: |
+          echo "Executing tests inside frontend Docker image..."
+          docker run --rm job-portal-frontend npm test
+
+      - name: Tag Images with Commit SHA
+        run: |
+          echo "Tagging local Docker images with commit SHA: ${{ github.sha }}"
+          docker tag job-portal-backend job-portal-backend:${{ github.sha }}
+          docker tag job-portal-frontend job-portal-frontend:${{ github.sha }}
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Tag and Push Images to GHCR
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          # Convert repository name to lowercase for GHCR compliance
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          
+          echo "Tagging images for GHCR repository: ghcr.io/${REPO_LOWER}"
+          docker tag job-portal-backend ghcr.io/${REPO_LOWER}/job-portal-backend:${{ github.sha }}
+          docker tag job-portal-frontend ghcr.io/${REPO_LOWER}/job-portal-frontend:${{ github.sha }}
+          docker tag job-portal-backend ghcr.io/${REPO_LOWER}/job-portal-backend:latest
+          docker tag job-portal-frontend ghcr.io/${REPO_LOWER}/job-portal-frontend:latest
+          
+          echo "Pushing SHA-tagged and latest images to GHCR..."
+          docker push ghcr.io/${REPO_LOWER}/job-portal-backend:${{ github.sha }}
+          docker push ghcr.io/${REPO_LOWER}/job-portal-frontend:${{ github.sha }}
+          docker push ghcr.io/${REPO_LOWER}/job-portal-backend:latest
+          docker push ghcr.io/${REPO_LOWER}/job-portal-frontend:latest

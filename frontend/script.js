@@ -1,4 +1,8 @@
 // === HELPER FUNCTIONS FOR EXPORT & TESTING ===
+function isValidJobTitle(title) {
+    return typeof title === 'string' && title.trim().length > 0;
+}
+
 function filterJobs(jobs, searchKeyword, location) {
     if (!jobs || !Array.isArray(jobs)) return [];
     return jobs.filter(job => {
@@ -157,6 +161,7 @@ if (typeof document !== 'undefined') {
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
+        isValidJobTitle,
         filterJobs,
         validateLoginForm,
         toggleModal,
