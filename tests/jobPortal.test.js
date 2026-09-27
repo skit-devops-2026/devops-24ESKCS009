@@ -13,7 +13,7 @@ const {
 describe('Job Portal Logic & Utility Unit Tests', () => {
     describe('isValidJobTitle()', () => {
         test('should return true for valid job titles', () => {
-            expect(isValidJobTitle('Cloud Engineer')).toBe(true);
+            expect(isValidJobTitle('Cloud Engineer')).toBe(false); // INTENTIONAL TEMPORARY FAILURE FOR DEVOPS DEMONSTRATION
             expect(isValidJobTitle('DevOps Specialist')).toBe(true);
         });
 
