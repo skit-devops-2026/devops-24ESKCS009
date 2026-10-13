@@ -1,4 +1,4 @@
-name: Job Portal Docker CI
+name: Job Portal DevOps CI/CD & Kubernetes Pipeline
 
 on:
   push:
@@ -13,8 +13,8 @@ permissions:
   packages: write
 
 jobs:
-  build-and-test:
-    name: Build Docker Images, Run Containerized Tests & Push to GHCR
+  build-test-and-deploy:
+    name: Build Containers, Verify Compose, Publish to GHCR & Verify Kubernetes
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,11 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+
+      - name: Build Root Unified Docker Image
+        run: |
+          echo "Building root production Docker image..."
+          docker build -t hirehub-unified .
 
       - name: Build Backend Docker Image
         run: |
@@ -49,7 +54,29 @@ jobs:
           echo "Executing tests inside frontend Docker image..."
           docker run --rm job-portal-frontend-test npm test
 
-      - name: Tag Images with Commit SHA
+      - name: Validate Docker Compose Configuration & Stack
+        run: |
+          echo "Validating docker-compose configuration..."
+          docker compose config
+          
+          echo "Starting Docker Compose services (mongodb, backend, frontend)..."
+          docker compose up -d
+          
+          echo "Waiting for services to become healthy..."
+          sleep 15
+          
+          docker compose ps
+          
+          echo "Verifying backend health endpoint..."
+          curl -f http://localhost:5000/api/health || exit 1
+          
+          echo "Verifying backend Prometheus metrics endpoint..."
+          curl -f http://localhost:5000/metrics | grep "job_portal_app_health" || exit 1
+          
+          echo "Tearing down compose stack..."
+          docker compose down
+
+      - name: Tag Images with Commit SHA and Latest
         run: |
           echo "Tagging local Docker images with commit SHA: ${{ github.sha }}"
           docker tag job-portal-backend job-portal-backend:${{ github.sha }}
@@ -63,7 +90,6 @@ jobs:
       - name: Tag and Push Images to GHCR
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          # Convert repository name to lowercase for GHCR compliance
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           
           echo "Tagging images for GHCR repository: ghcr.io/${REPO_LOWER}"
@@ -77,3 +103,32 @@ jobs:
           docker push ghcr.io/${REPO_LOWER}/job-portal-frontend:${{ github.sha }}
           docker push ghcr.io/${REPO_LOWER}/job-portal-backend:latest
           docker push ghcr.io/${REPO_LOWER}/job-portal-frontend:latest
+
+      - name: Setup kind Kubernetes Cluster
+        uses: helm/kind-action@v1.10.0
+        with:
+          cluster_name: hirehub-k8s-cluster
+
+      - name: Deploy and Verify Kubernetes Manifests
+        run: |
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          
+          echo "Tagging and loading image into kind cluster..."
+          docker tag job-portal-backend ghcr.io/${REPO_LOWER}/job-portal-backend:latest
+          kind load docker-image ghcr.io/${REPO_LOWER}/job-portal-backend:latest --name hirehub-k8s-cluster
+          
+          echo "Applying Kubernetes manifests..."
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          
+          echo "Waiting for pods to reach READY status..."
+          kubectl rollout status deployment/hirehub-backend-deployment --timeout=120s
+          
+          echo "Kubernetes Deployment Status:"
+          kubectl get deployments -o wide
+          
+          echo "Kubernetes Pods Status (Verification):"
+          kubectl get pods -o wide
+          
+          echo "Kubernetes Services Status:"
+          kubectl get services -o wide
