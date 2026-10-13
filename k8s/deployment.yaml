@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hirehub-backend-deployment
+  labels:
+    app: hirehub-backend
+    tier: api
+    module: m7-kubernetes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hirehub-backend
+  template:
+    metadata:
+      labels:
+        app: hirehub-backend
+        tier: api
+    spec:
+      containers:
+        - name: hirehub-backend
+          image: ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+              name: http
+          env:
+            - name: PORT
+              value: "5000"
+            - name: NODE_ENV
+              value: "production"
+            - name: MONGO_URI
+              value: "mongodb://mongodb:27017/jobportal"
+            - name: JWT_SECRET
+              value: "devops-secret-key-hirehub-2026"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 3
