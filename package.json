@@ -4,6 +4,7 @@
   "description": "A modern responsive job portal application with CI/CD automated pipeline.",
   "main": "script.js",
   "scripts": {
+    "start": "node backend/server.js",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
