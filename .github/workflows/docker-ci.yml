@@ -79,6 +79,7 @@ jobs:
       - name: Tag Images with Commit SHA and Latest
         run: |
           echo "Tagging local Docker images with commit SHA: ${{ github.sha }}"
+          docker tag hirehub-unified hirehub-unified:${{ github.sha }}
           docker tag job-portal-backend job-portal-backend:${{ github.sha }}
           docker tag job-portal-frontend job-portal-frontend:${{ github.sha }}
 
@@ -93,12 +94,16 @@ jobs:
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           
           echo "Tagging images for GHCR repository: ghcr.io/${REPO_LOWER}"
+          docker tag hirehub-unified ghcr.io/${REPO_LOWER}/hirehub-job-portal:${{ github.sha }}
+          docker tag hirehub-unified ghcr.io/${REPO_LOWER}/hirehub-job-portal:latest
           docker tag job-portal-backend ghcr.io/${REPO_LOWER}/job-portal-backend:${{ github.sha }}
           docker tag job-portal-frontend ghcr.io/${REPO_LOWER}/job-portal-frontend:${{ github.sha }}
           docker tag job-portal-backend ghcr.io/${REPO_LOWER}/job-portal-backend:latest
           docker tag job-portal-frontend ghcr.io/${REPO_LOWER}/job-portal-frontend:latest
           
           echo "Pushing SHA-tagged and latest images to GHCR..."
+          docker push ghcr.io/${REPO_LOWER}/hirehub-job-portal:${{ github.sha }}
+          docker push ghcr.io/${REPO_LOWER}/hirehub-job-portal:latest
           docker push ghcr.io/${REPO_LOWER}/job-portal-backend:${{ github.sha }}
           docker push ghcr.io/${REPO_LOWER}/job-portal-frontend:${{ github.sha }}
           docker push ghcr.io/${REPO_LOWER}/job-portal-backend:latest

@@ -2,6 +2,7 @@ services:
   - type: web
     name: hirehub-job-portal
     runtime: docker
+    dockerContext: .
     dockerfilePath: ./Dockerfile
     plan: free
     region: oregon

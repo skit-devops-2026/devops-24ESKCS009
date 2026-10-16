@@ -152,13 +152,21 @@ docker compose down
 ```
 
 ### 3. Container Registry Publishing
-Docker images are automatically tagged and published to GitHub Container Registry (GHCR):
-- **Backend Image**: `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend:latest`
-- **Frontend Image**: `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend:latest`
+Docker images are automatically tagged and published to GitHub Container Registry (GHCR) on each push to `main`:
+- **Unified Full-Stack App Image**: `ghcr.io/skit-devops-2026/devops-24eskcs009/hirehub-job-portal:latest`
+- **Backend API Service Image**: `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend:latest`
+- **Frontend Nginx Service Image**: `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend:latest`
 
-Pull the registry image:
+Pull the registry images:
 ```bash
+# Pull unified application image
+docker pull ghcr.io/skit-devops-2026/devops-24eskcs009/hirehub-job-portal:latest
+
+# Pull backend API image
 docker pull ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend:latest
+
+# Pull frontend web server image
+docker pull ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend:latest
 ```
 
 ---

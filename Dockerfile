@@ -9,8 +9,8 @@ COPY package*.json ./
 COPY backend/package*.json ./backend/
 
 # Install dependencies for backend and root
-RUN cd backend && npm install --only=production
-RUN npm install --only=production --ignore-scripts
+RUN cd backend && npm install --omit=dev
+RUN npm install --omit=dev --ignore-scripts
 
 # Copy complete project files (backend logic and frontend web assets)
 COPY . .
