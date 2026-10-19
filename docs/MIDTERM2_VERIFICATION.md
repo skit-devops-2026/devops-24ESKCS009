@@ -24,17 +24,24 @@
   - Tags images with both `latest` and immutable commit SHA `${{ github.sha }}`.
 
 ### 2. Registry Build & Push Execution Evidence
-- **Automated Workflow Run**: `Job Portal DevOps CI/CD & Kubernetes Pipeline`
-- **GitHub Run ID**: [38953503700](https://github.com/skit-devops-2026/devops-24ESKCS009/actions/runs/38953503700)
-- **Commit SHA**: `cc0cb019a0403ede1c9118c7bc99187ec982d62d`
-- **Pipeline Execution Result**: **SUCCESS** (All 17 steps completed successfully)
+- **Automated Workflow Run 1 (HireHub CI Pipeline — Faculty Standard `ci.yml`)**:
+  - **Run ID**: [39252117681](https://github.com/skit-devops-2026/devops-24ESKCS009/actions/runs/39252117681)
+  - **Job Name & ID**: `Build and push images` ([Job 118058365108](https://github.com/skit-devops-2026/devops-24ESKCS009/actions/runs/39252117681/job/118058365108))
+  - **Commit SHA**: `8b1960ebed4c4a9dd49f465c2fe9ffb0c1523eb3`
+  - **Pipeline Execution Result**: **SUCCESS** (All 17 steps completed successfully)
+- **Automated Workflow Run 2 (Job Portal DevOps CI/CD & Kubernetes Pipeline)**:
+  - **Run ID**: [39252117645](https://github.com/skit-devops-2026/devops-24ESKCS009/actions/runs/39252117645)
+  - **Pipeline Execution Result**: **SUCCESS** (Compose, GHCR & Kubernetes rollout verified)
 
 ### 3. Registry Image Names & Tags
-| Image | Registry Target | Tags |
-| :--- | :--- | :--- |
-| **Unified Full-Stack App** | `ghcr.io/skit-devops-2026/devops-24eskcs009/hirehub-job-portal` | `:latest`, `:cc0cb01` |
-| **Backend REST API** | `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend` | `:latest`, `:cc0cb01` |
-| **Frontend Nginx Proxy** | `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend` | `:latest`, `:cc0cb01` |
+| Component | Image Target (GHCR) | Tags | Build Context |
+| :--- | :--- | :--- | :--- |
+| **Unified Full-Stack App (Root)** | `ghcr.io/skit-devops-2026/devops-24eskcs009` | `:latest` | `.` (Dockerfile) |
+| **Unified Full-Stack App (Named)** | `ghcr.io/skit-devops-2026/devops-24eskcs009/hirehub-job-portal` | `:latest` | `.` (Dockerfile) |
+| **Backend REST API** | `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-backend` | `:latest` | `./backend` |
+| **Backend REST API (Short)** | `ghcr.io/skit-devops-2026/devops-24eskcs009/backend` | `:latest` | `./backend` |
+| **Frontend Nginx Proxy** | `ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend` | `:latest` | `./frontend` |
+| **Frontend Nginx Proxy (Short)** | `ghcr.io/skit-devops-2026/devops-24eskcs009/frontend` | `:latest` | `./frontend` |
 
 ### 4. Pull Verification Commands
 ```bash
