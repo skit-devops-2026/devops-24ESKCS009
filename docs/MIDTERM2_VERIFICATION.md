@@ -71,10 +71,10 @@ docker pull ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend:lates
 ### 2. Live Public URL Verification
 The containerized application is running and accessible live on the public internet:
 
-- **Public Live URL**: `https://ten-eagles-argue.loca.lt` (Tunnel password / IP: `49.36.235.213`)
-- **Health Check API**: `https://ten-eagles-argue.loca.lt/api/health`
-- **Jobs REST API**: `https://ten-eagles-argue.loca.lt/api/jobs`
-- **Prometheus Metrics**: `https://ten-eagles-argue.loca.lt/metrics`
+- **Public Live URL**: `https://frequently-holds-poison-guarantees.trycloudflare.com`
+- **Health Check API**: `https://frequently-holds-poison-guarantees.trycloudflare.com/api/health`
+- **Jobs REST API**: `https://frequently-holds-poison-guarantees.trycloudflare.com/api/jobs`
+- **Prometheus Metrics**: `https://frequently-holds-poison-guarantees.trycloudflare.com/metrics`
 
 #### Verified Live HTTP Probes:
 | Endpoint | Method | Expected | Actual Result | Status |

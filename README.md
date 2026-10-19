@@ -11,16 +11,11 @@ HireHub is a modern, full-stack, containerized job portal platform designed to h
 
 ---
 
-## 🌐 Live Demo
+## Live URL
 
-The containerized application is deployed and live at:
+Frontend: https://frequently-holds-poison-guarantees.trycloudflare.com Backend health: https://frequently-holds-poison-guarantees.trycloudflare.com/api/health
 
-**https://hirehub-job-portal.onrender.com**
-
-- **Web Portal UI**: https://hirehub-job-portal.onrender.com
-- **Health Check API**: https://hirehub-job-portal.onrender.com/api/health
-- **Prometheus Metrics**: https://hirehub-job-portal.onrender.com/metrics
-- **Jobs API Endpoint**: https://hirehub-job-portal.onrender.com/api/jobs
+Backend metrics: https://frequently-holds-poison-guarantees.trycloudflare.com/metrics
 
 ---
 
@@ -175,7 +170,7 @@ docker pull ghcr.io/skit-devops-2026/devops-24eskcs009/job-portal-frontend:lates
 
 ### 1. Live Deployment Platform
 HireHub is deployed to **Render** using Docker runtime and Blueprint automation (`render.yaml`).
-- **Live URL**: https://hirehub-job-portal.onrender.com
+- **Live URL**: https://frequently-holds-poison-guarantees.trycloudflare.com
 - **Verification Screenshot**: Saved at [`docs/deployment.png`](file:///c:/Users/Abhay/OneDrive/Desktop/job%20portal/docs/deployment.png)
 
 ![Deployment Verification](docs/deployment.png)
